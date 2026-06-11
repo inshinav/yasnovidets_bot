@@ -16,6 +16,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
 body{
   font-family:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   background:var(--blue-mist); color:var(--ink);
@@ -27,8 +28,13 @@ a{color:var(--blue-dark);text-decoration:none;border-bottom:1px solid rgba(45,14
 a:hover{border-bottom-color:var(--blue-dark)}
 
 /* ── Шапка ── */
-header.hero{position:relative;padding:64px 0 40px;overflow:visible}
+header.hero{position:relative;padding:64px 0 4px;overflow:visible}
 .sun{position:absolute;top:8px;right:-30px;width:220px;height:220px;pointer-events:none;opacity:.9}
+@media(max-width:640px){
+  .sun{width:140px;height:140px;right:-26px;top:0;opacity:.75}
+  header.hero{padding-top:48px}
+  .kicker{font-size:11.5px;padding:6px 12px}
+}
 .kicker{display:inline-flex;align-items:center;gap:10px;background:var(--blue-soft);color:var(--blue-dark);
   font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
   padding:7px 14px;border-radius:999px}
@@ -204,11 +210,11 @@ footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);font-si
   </div>
   <div class="nums">
     <div class="num-card"><div class="v">40%</div><div class="d">россиян хотя бы раз были у психолога — 58,5+ млн человек <a href="https://psy.su/feed/13792/" target="_blank" rel="noopener">psy.su</a></div></div>
-    <div class="num-card"><div class="v">140–152 тыс.</div><div class="d">психологов будет в РФ к 2027–28 (сейчас ~110 тыс.) <a href="https://psy.su/feed/13792/" target="_blank" rel="noopener">psy.su</a></div></div>
+    <div class="num-card"><div class="v">140–152&nbsp;тыс.</div><div class="d">психологов будет в РФ к 2027–28 (сейчас ~110 тыс.) <a href="https://psy.su/feed/13792/" target="_blank" rel="noopener">psy.su</a></div></div>
     <div class="num-card"><div class="v">$19,99</div><div class="d">цена месяца AI-терапевта Tee от Talkspace <a href="https://finance.yahoo.com/sectors/healthcare/articles/talkspace-announces-tee-first-safe-123000202.html" target="_blank" rel="noopener">Yahoo</a></div></div>
-    <div class="num-card"><div class="v">~$835 млн</div><div class="d">оценка Talkspace в сделке с UHS <a href="https://www.prnewswire.com/news-releases/universal-health-services-inc-to-acquire-talkspace-inc-302708096.html" target="_blank" rel="noopener">PR Newswire</a></div></div>
+    <div class="num-card"><div class="v">~$835&nbsp;млн</div><div class="d">оценка Talkspace в сделке с UHS <a href="https://www.prnewswire.com/news-releases/universal-health-services-inc-to-acquire-talkspace-inc-302708096.html" target="_blank" rel="noopener">PR Newswire</a></div></div>
     <div class="num-card"><div class="v">104</div><div class="d">матча ЧМ-2026 за месяц — и почти все ночью по МСК <a href="https://www.aljazeera.com/sports/2026/6/9/world-cup-opening-ceremony-whos-performing-when-it-starts-how-to-watch" target="_blank" rel="noopener">Al Jazeera</a></div></div>
-    <div class="num-card"><div class="v">700 тыс. ₽</div><div class="d">штраф за вход на сайт только через иностранные сервисы <a href="https://ppc.world/news/gosduma-prinyala-zakon-o-shtrafah-do-700-000-rubley-za-narushenie-pravil-avtorizacii-na-saytah/" target="_blank" rel="noopener">ppc.world</a></div></div>
+    <div class="num-card"><div class="v">700&nbsp;тыс.&nbsp;₽</div><div class="d">штраф за вход на сайт только через иностранные сервисы <a href="https://ppc.world/news/gosduma-prinyala-zakon-o-shtrafah-do-700-000-rubley-za-narushenie-pravil-avtorizacii-na-saytah/" target="_blank" rel="noopener">ppc.world</a></div></div>
   </div>
 </section>
 

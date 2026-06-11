@@ -12,8 +12,10 @@
   --ink:#10243E;--ink-soft:#4A5C74;--ink-mute:#8295AC;--line:#DCE9F9;
   --shadow:0 6px 24px rgba(45,140,255,.10),0 1px 3px rgba(16,36,62,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
 body{font-family:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--blue-mist);
   color:var(--ink);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+@media(max-width:640px){.sun{width:120px;height:120px;right:-18px}}
 .wrap{max-width:680px;margin:0 auto;padding:0 20px 80px}
 header{position:relative;padding:72px 0 36px}
 .sun{position:absolute;top:20px;right:-20px;width:170px;height:170px;pointer-events:none}
