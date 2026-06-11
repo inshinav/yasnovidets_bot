@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "type": "issue_messages",
+    "issue": 1,
+    "date": "2026-06-11",
+    "messages": {"digest_1": 4, "digest_2": 5, "blank": 6, "quiz": 7, "ideas_poll": 8},
+    "quiz_correct_option": 2,
+    "note": "Карта сообщений выпуска №1 — для подсчёта реакций (CTR рубрик) и ответов quiz в следующих запусках"
+  }
+]
