@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ясновидец №1 — 11 июня 2026 • за 10–11 июня</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2D8CFF; --blue-dark:#1668D9; --blue-soft:#EAF3FF; --blue-mist:#F6FAFF;
+  --ink:#10243E; --ink-soft:#4A5C74; --ink-mute:#8295AC;
+  --card:#FFFFFF; --line:#DCE9F9; --sun:#FFD66B;
+  --r:20px; --shadow:0 6px 24px rgba(45,140,255,.10), 0 1px 3px rgba(16,36,62,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  background:var(--blue-mist); color:var(--ink);
+  line-height:1.62; font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 20px 80px}
+a{color:var(--blue-dark);text-decoration:none;border-bottom:1px solid rgba(45,140,255,.35)}
+a:hover{border-bottom-color:var(--blue-dark)}
+
+/* ── Шапка ── */
+header.hero{position:relative;padding:64px 0 40px;overflow:visible}
+.sun{position:absolute;top:8px;right:-30px;width:220px;height:220px;pointer-events:none;opacity:.9}
+.kicker{display:inline-flex;align-items:center;gap:10px;background:var(--blue-soft);color:var(--blue-dark);
+  font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 14px;border-radius:999px}
+h1{font-size:clamp(38px,7vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:18px 0 6px}
+h1 .num{color:var(--blue)}
+.meta{color:var(--ink-soft);font-weight:600;font-size:15px;margin-bottom:22px}
+.lede{font-size:clamp(20px,3.4vw,25px);font-weight:700;letter-spacing:-.015em;line-height:1.3;max-width:620px}
+.mark{position:relative;white-space:nowrap}
+.mark svg{position:absolute;left:-2%;bottom:-9px;width:104%;height:14px;overflow:visible}
+
+/* ── Секции ── */
+section{margin-top:56px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+h2{font-size:clamp(24px,4vw,30px);font-weight:800;letter-spacing:-.02em}
+.sec-head .scrib{flex:0 0 54px;height:18px;margin-top:auto}
+h3{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.muted{color:var(--ink-soft)}
+.small{font-size:14px;color:var(--ink-mute)}
+
+/* ── Главное ── */
+.top3{display:grid;gap:14px}
+.top3 .item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow);display:flex;gap:16px}
+.top3 .n{flex:0 0 34px;height:34px;border-radius:12px;background:var(--blue);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px;margin-top:2px}
+.top3 p{font-size:16.5px}
+.top3 b{font-weight:800}
+
+/* ── Карточки-блоки ── */
+.block{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;box-shadow:var(--shadow)}
+.block + .block{margin-top:14px}
+.block .tag-src{font-size:13px;color:var(--ink-mute);font-weight:600;margin-top:10px}
+.takeaway{margin-top:12px;padding:12px 16px;background:var(--blue-soft);border-radius:14px;font-size:15.5px}
+.takeaway b{color:var(--blue-dark)}
+
+/* ── Цифры ── */
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.num-card{background:linear-gradient(160deg,#fff 60%,var(--blue-soft));border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.num-card .v{font-size:clamp(26px,4.5vw,34px);font-weight:800;color:var(--blue);letter-spacing:-.02em;line-height:1.1}
+.num-card .d{font-size:13.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45}
+@media(max-width:640px){.nums{grid-template-columns:1fr 1fr}}
+
+/* ── Календарь ── */
+.cal{list-style:none}
+.cal li{display:flex;gap:14px;padding:13px 4px;border-bottom:1px dashed var(--line);align-items:baseline}
+.cal .date{flex:0 0 92px;font-weight:800;color:var(--blue-dark);font-size:15px}
+.cal .heat{flex:0 0 30px;text-align:center}
+.cal p{font-size:15.5px;flex:1}
+
+/* ── Идеи ── */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 22px}
+.chip{border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-weight:700;font-size:13.5px;
+  padding:7px 14px;border-radius:999px;cursor:pointer;font-family:inherit;transition:.15s}
+.chip:hover{border-color:var(--blue)}
+.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.idea{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+.idea.gold{border:1.5px solid var(--blue);background:linear-gradient(165deg,#fff 70%,var(--blue-soft))}
+.idea summary{list-style:none;cursor:pointer;padding:20px 22px;position:relative}
+.idea summary::-webkit-details-marker{display:none}
+.idea summary::after{content:"";position:absolute;right:22px;top:28px;width:10px;height:10px;
+  border-right:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(45deg);transition:.2s}
+.idea[open] summary::after{transform:rotate(-135deg);top:34px}
+.idea .dirs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.dir{font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--blue-dark);background:var(--blue-soft);
+  padding:4px 10px;border-radius:999px;text-transform:lowercase}
+.idea .ttl{font-size:17.5px;font-weight:800;letter-spacing:-.01em;padding-right:30px}
+.idea .ttl .star{color:var(--blue)}
+.idea .why{font-size:15px;color:var(--ink-soft);margin-top:8px;padding-right:26px}
+.idea .body{padding:0 22px 22px}
+.pf{background:var(--blue-mist);border:1px dashed var(--blue);border-radius:14px;padding:16px 18px;margin-top:4px}
+.pf pre{white-space:pre-wrap;font-family:inherit;font-size:14.5px;line-height:1.55;color:var(--ink)}
+.pf-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.pf-head .lbl{font-size:13px;font-weight:800;color:var(--blue-dark);text-transform:uppercase;letter-spacing:.05em}
+.copy{background:var(--blue);color:#fff;border:none;border-radius:999px;font-family:inherit;font-weight:800;
+  font-size:13.5px;padding:8px 16px;cursor:pointer;transition:.15s}
+.copy:hover{background:var(--blue-dark)}
+.copy.ok{background:#23B26D}
+
+/* ── SMM-уголок ── */
+.smm{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.smm .cell{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.smm .net{font-weight:800;color:var(--blue);font-size:15px;margin-bottom:6px}
+.smm p{font-size:14.5px}
+@media(max-width:640px){.smm{grid-template-columns:1fr}}
+
+/* ── Радар ── */
+.radar .block{border-left:4px solid var(--sun)}
+
+footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-mute);line-height:1.6}
+.scrib path,.mark path{stroke:var(--blue);stroke-width:3;fill:none;stroke-linecap:round}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <svg class="sun" viewBox="0 0 220 220" aria-hidden="true">
+    <circle cx="150" cy="80" r="38" fill="#FFD66B" opacity=".95"/>
+    <g stroke="#2D8CFF" stroke-width="3" stroke-linecap="round" opacity=".7">
+      <path d="M150 18 v14"/><path d="M150 128 v14"/><path d="M88 80 h14"/><path d="M198 80 h14"/>
+      <path d="M106 36 l10 10"/><path d="M184 114 l10 10"/><path d="M194 36 l-10 10"/><path d="M116 114 l-10 10"/>
+    </g>
+    <path d="M30 170 q60 -26 160 -8" stroke="#2D8CFF" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/>
+  </svg>
+  <span class="kicker">🔮 планёрка · внутреннее медиа маркетинга Ясно</span>
+  <h1>Ясновидец <span class="num">№1</span></h1>
+  <div class="meta">11 июня 2026 · фактура за 10–11 июня · 12 идей · 11 направлений</div>
+  <p class="lede">Государство пришло на рынок психопомощи — и это
+    <span class="mark">шанс Ясно<svg viewBox="0 0 120 14" preserveAspectRatio="none"><path d="M2 9 q14 -7 30 -3 t30 1 t28 -3 t26 2"/></svg></span>,
+    а не угроза.</p>
+</header>
+
+<!-- ГЛАВНОЕ -->
+<section id="top">
+  <div class="sec-head"><h2>Главное</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <div class="top3">
+    <div class="item"><div class="n">1</div><p><b>СПЧ требует закон против «псевдопсихологов».</b> Тема «как отличить специалиста от шарлатана» — теперь федеральная повестка. У Ясно готовый ответ: прозрачный отбор. Берём волну, пока горячо → идея №1.</p></div>
+    <div class="item"><div class="n">2</div><p><b>Talkspace выпустила AI-терапевта Tee за $19,99/мес.</b> Большие игроки делают из AI «прихожую терапии» с живым контуром безопасности — не замену. Рамка для нашей AI-стратегии и контента → идеи №5, 11.</p></div>
+    <div class="item"><div class="n">3</div><p><b>VK Реклама открыла бету «Каналов».</b> Подписчиков ВКонтакте и Дзена теперь можно закупать прямо из кабинета с оптимизацией на подписку — пока бета, аукцион дешёвый → идея №4.</p></div>
+  </div>
+</section>
+
+<!-- РЫНОК РФ -->
+<section id="ru">
+  <div class="sec-head"><h2>Рынок РФ и регулятор</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <p class="muted" style="margin-bottom:14px">Alter, Zigmund.Online и YouTalk за два дня — тишина (проверены блоги и СМИ). Зато шевелится регулятор, и это важнее:</p>
+  <div class="block">
+    <h3>СПЧ взялся за рынок психоуслуг</h3>
+    <p style="margin-top:8px">На рабочей группе СПЧ «Здравоохранение и народосбережение» Яна Лантратова заявила, что рынок заполнили псевдопсихологи с «сомнительными тренингами и оккультными практиками», и предложила жёсткие требования к образованию, стандарты безопасности и контроль качества.</p>
+    <div class="takeaway"><b>Для нас:</b> страх «попасть к шарлатану» — главный барьер всей категории — теперь обсуждают на федеральном уровне. Каждый день волны — бесплатный охват для тех, кто умеет показать свой отбор. Питчим экспертизу (идея №1), укрепляем блок доверия на лендинге (идея №11), готовим позицию к будущему закону.</div>
+    <div class="tag-src">Источник: <a href="https://psy.su/feed/13791/" target="_blank" rel="noopener">Психологическая газета, 10.06.2026</a></div>
+  </div>
+  <div class="block">
+    <h3>Озвучен масштаб рынка: 40% россиян были у психолога</h3>
+    <p style="margin-top:8px">Президент Профессиональной психотерапевтической лиги Виктор Макаров привёл на СПЧ оценку: за психологической помощью обращались 40% населения — более 58,5 млн человек. Число специалистов вырастет со ~110 тыс. до 140–152 тыс. к 2027–2028.</p>
+    <div class="takeaway"><b>Для нас:</b> потолок аудитории далеко не выбран — можно смелее расширять верхнюю воронку и look-alike. Обратная сторона: за сильных терапевтов скоро будут драться все платформы — пора усиливать HR-маркетинг (идея №10).</div>
+    <div class="tag-src">Источник: <a href="https://psy.su/feed/13792/" target="_blank" rel="noopener">Психологическая газета, 10.06.2026</a></div>
+  </div>
+  <div class="block">
+    <h3>Итоги 20-го Санкт-Петербургского саммита психологов</h3>
+    <p style="margin-top:8px">100+ мастер-классов, дискуссия о регулировании с участием Госдумы, вручение «Золотой Психеи». Главная офлайн-площадка профсообщества — здесь платформы охотятся за терапевтами.</p>
+    <div class="takeaway"><b>Для нас:</b> оценить присутствие в следующем году (стенд или доклад — рекрутинг терапевтов), а «Золотую Психею» взять в прицел как недорогую PR-цель: номинировать исследование Ясно.</div>
+    <div class="tag-src">Источник: <a href="https://psy.su/feed/13760/" target="_blank" rel="noopener">Психологическая газета, 10.06.2026</a></div>
+  </div>
+</section>
+
+<!-- МИР -->
+<section id="world">
+  <div class="sec-head"><h2>Мир: что перенять</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <div class="block">
+    <h3>Talkspace запустила Tee — AI-агента с живой подстраховкой</h3>
+    <p style="margin-top:8px">AI-агент для 18+: помнит контекст разговоров, работает 24/7, стоит $19,99/мес (7 дней бесплатно). Ключевое — контур безопасности: при признаках риска подключается живой лицензированный клиницист. Контекст: саму Talkspace покупает госпитальный гигант UHS за ~$835 млн ($5,25 за акцию, закрытие — Q3 2026).</p>
+    <div class="takeaway"><b>Что перенять:</b> формулу «AI — мост к терапевту, а не замена». Даже компания, продающая AI-терапию, не оставляет с ботом человека в уязвимый момент. Для Ясно: AI-функции проектировать только с человеческим контуром, а в контенте — занять позицию «бот выслушает, терапевт услышит» (идея №5).</div>
+    <div class="tag-src">Источники: <a href="https://finance.yahoo.com/sectors/healthcare/articles/talkspace-announces-tee-first-safe-123000202.html" target="_blank" rel="noopener">Yahoo Finance, 9.06</a> · <a href="https://www.prnewswire.com/news-releases/universal-health-services-inc-to-acquire-talkspace-inc-302708096.html" target="_blank" rel="noopener">PR Newswire (сделка UHS)</a></div>
+  </div>
+  <div class="block">
+    <h3>SLEEP 2026: сон посчитали в деньгах</h3>
+    <p style="margin-top:8px">Исследование на конференции SLEEP 2026 (455 взрослых): люди называли цену, за которую готовы улучшить сон, и компенсацию, за которую согласны потерять час сна. Чем выше доход — тем дороже час сна; пожилые оценивают потерянный час дешевле молодых.</p>
+    <div class="takeaway"><b>Что перенять:</b> фрейм «сон и терапия — инвестиция, а не трата» для креативов и CRM. Заголовок-готовка: «Сколько стоит ваш час сна?»</div>
+    <div class="tag-src">Источник: <a href="https://neurosciencenews.com/monetary-sleep-value-30857/" target="_blank" rel="noopener">Neuroscience News, 10.06</a></div>
+  </div>
+</section>
+
+<!-- ЦИФРЫ -->
+<section id="nums">
+  <div class="sec-head"><h2>Цифры дня</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <div class="nums">
+    <div class="num-card"><div class="v">40%</div><div class="d">россиян хотя бы раз были у психолога — 58,5+ млн человек <a href="https://psy.su/feed/13792/" target="_blank" rel="noopener">psy.su</a></div></div>
+    <div class="num-card"><div class="v">140–152 тыс.</div><div class="d">психологов будет в РФ к 2027–28 (сейчас ~110 тыс.) <a href="https://psy.su/feed/13792/" target="_blank" rel="noopener">psy.su</a></div></div>
+    <div class="num-card"><div class="v">$19,99</div><div class="d">цена месяца AI-терапевта Tee от Talkspace <a href="https://finance.yahoo.com/sectors/healthcare/articles/talkspace-announces-tee-first-safe-123000202.html" target="_blank" rel="noopener">Yahoo</a></div></div>
+    <div class="num-card"><div class="v">~$835 млн</div><div class="d">оценка Talkspace в сделке с UHS <a href="https://www.prnewswire.com/news-releases/universal-health-services-inc-to-acquire-talkspace-inc-302708096.html" target="_blank" rel="noopener">PR Newswire</a></div></div>
+    <div class="num-card"><div class="v">104</div><div class="d">матча ЧМ-2026 за месяц — и почти все ночью по МСК <a href="https://www.aljazeera.com/sports/2026/6/9/world-cup-opening-ceremony-whos-performing-when-it-starts-how-to-watch" target="_blank" rel="noopener">Al Jazeera</a></div></div>
+    <div class="num-card"><div class="v">700 тыс. ₽</div><div class="d">штраф за вход на сайт только через иностранные сервисы <a href="https://ppc.world/news/gosduma-prinyala-zakon-o-shtrafah-do-700-000-rubley-za-narushenie-pravil-avtorizacii-na-saytah/" target="_blank" rel="noopener">ppc.world</a></div></div>
+  </div>
+</section>
+
+<!-- КАЛЕНДАРЬ -->
+<section id="cal">
+  <div class="sec-head"><h2>Календарь охотника</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <ul class="cal">
+    <li><span class="date">12–14.06</span><span class="heat">🔥</span><p>День России, три выходных подряд — пик темы «отдых без чувства вины» → идея №2 <a href="https://lenta.ru/articles/2026/06/01/kak-otdykhaem-na-12-iyunya/" target="_blank" rel="noopener">Лента</a></p></li>
+    <li><span class="date">до 19.06</span><span class="heat">🔥</span><p>Пик ЕГЭ: 15.06 — биология/география/иностранный, 18–19.06 — информатика и устная часть. Две недели максимального стресса в семьях → идеи №3, 12 <a href="https://obrnadzor.gov.ru/news/utverzhdeny-sroki-provedeniya-ege-i-oge-v-2026-godu/" target="_blank" rel="noopener">Рособрнадзор</a></p></li>
+    <li><span class="date">11.06+</span><span class="heat">👍</span><p>Стартовал ЧМ-2026 — 104 матча, по Москве ночью: месяц коллективного недосыпа болельщиков → идея №6 <a href="https://www.aljazeera.com/sports/2026/6/9/world-cup-opening-ceremony-whos-performing-when-it-starts-how-to-watch" target="_blank" rel="noopener">Al Jazeera</a></p></li>
+    <li><span class="date">11.06</span><span class="heat">👍</span><p>«Холоп 3» в кино: дети спасают брак родителей — семейный кризис в мейнстриме, окно для ньюсджекинга <a href="https://lenta.ru/articles/2026/06/11/v-kino-holop-3/" target="_blank" rel="noopener">Лента</a></p></li>
+    <li><span class="date">10.06</span><span class="heat">👍</span><p>Волна: интервью Александра Петрова «Снобу» — «семья выше карьеры». Хук про смену приоритетов для ЦА 30+ <a href="https://eadaily.com/ru/news/2026/06/10/samyy-vostrebovannyy-rossiyskiy-akter-vyskazalsya-ob-otezde-iz-strany" target="_blank" rel="noopener">EADaily</a></p></li>
+    <li><span class="date">21.06</span><span class="heat">🔥</span><p>День медицинского работника — врачи в топе по выгоранию, тёплый повод → идея №7 <a href="https://www.kp.ru/family/prazdniki/den-meditsinskogo-rabotnika/" target="_blank" rel="noopener">КП</a></p></li>
+    <li><span class="date">21.06</span><span class="heat">💤</span><p>Летнее солнцестояние — сон, свет, мягкая отстройка от эзотерики → идея №8 <a href="https://life.ru/p/1885592" target="_blank" rel="noopener">Life</a></p></li>
+    <li><span class="date">21.06</span><span class="heat">👍</span><p>3 сезон «Дома Дракона» — семейная вражда как мемный материал для ситуатива <a href="https://dtf.ru/cinema/5080474-glavnye-serialnye-premery-mesyatsa" target="_blank" rel="noopener">DTF</a></p></li>
+  </ul>
+</section>
+
+<!-- ИДЕИ -->
+<section id="ideas">
+  <div class="sec-head"><h2>Идеи на стол</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <p class="muted" style="margin-bottom:4px">12 идей по 11 направлениям. Фильтруйте под себя, раскрывайте карточку — внутри полуфабрикат, копируется кнопкой. Берёте в работу — реплай в чате: «беру №N» (за №1–8 можно голосовать в опросе).</p>
+  <div class="chips" id="chips">
+    <button class="chip on" data-f="all">все</button>
+    <button class="chip" data-f="perf">перформанс/реклама</button>
+    <button class="chip" data-f="smm">SMM/organic</button>
+    <button class="chip" data-f="influence">influence</button>
+    <button class="chip" data-f="seo">SEO/контент</button>
+    <button class="chip" data-f="crm">CRM/lifecycle</button>
+    <button class="chip" data-f="pr">PR</button>
+    <button class="chip" data-f="brand">бренд/спецпроекты</button>
+    <button class="chip" data-f="b2b">partnerships/B2B</button>
+    <button class="chip" data-f="product">product/CRO</button>
+    <button class="chip" data-f="hr">HR-маркетинг</button>
+    <button class="chip" data-f="design">дизайн</button>
+  </div>
+
+  <details class="idea gold" data-dirs="pr" open>
+    <summary>
+      <div class="dirs"><span class="dir">PR</span></div>
+      <div class="ttl"><span class="star">🏆 №1.</span> Питч в СМИ: чек-лист «Как отличить психолога от псевдопсихолога»</div>
+      <div class="why">Почему сейчас: волна СПЧ в федеральной повестке, журналисты ищут экспертов — а тема доживёт до законопроекта. Идея дня.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · бриф</span><button class="copy" data-t="pf1">Скопировать</button></div>
+<pre id="pf1">PR-бриф «Чек-лист против шарлатанов»
+Цель: застолбить за Ясно тему «как отличить специалиста» на волне СПЧ.
+Кому: РБК Life, Forbes Life, Газета.Ru, Лента.ру (соцблок), профильные психо- и медиаканалы в Telegram.
+Фактура: заседание СПЧ 8.06 и цифра «40% россиян были у психолога» (psy.su, 10.06) + наши данные отбора: доля допущенных кандидатов, проверка дипломов и опыта, супервизия.
+Формат: комментарий эксперта Ясно + чек-лист «7 признаков, что перед вами специалист, а не шарлатан».
+Заголовки на выбор:
+— Рынок психоуслуг ждёт закон. Не попасть к шарлатану можно уже сейчас
+— 40% россиян были у психолога. Как выбрать настоящего
+— Диплом, супервизия, метод: чек-лист перед первой сессией</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="crm">
+    <summary>
+      <div class="dirs"><span class="dir">CRM/lifecycle</span></div>
+      <div class="ttl">№2. Рассылка на длинные выходные: «Почему за три дня не отдыхается»</div>
+      <div class="why">Почему сейчас: 12–14 июня — мини-отпуск; тема «не умею отдыхать» на пике. Отправка в субботу утром.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · письмо</span><button class="copy" data-t="pf2">Скопировать</button></div>
+<pre id="pf2">Тема: Три выходных — и ни дня отдыха?
+Альтернатива: Почему после праздников хочется отпуск от праздников
+
+Структура: 1) признание «отдыхать тоже не всегда получается» → 2) три коротких причины: вина за безделье, телефон вместо отдыха, «надо успеть всё» → 3) мягкий вывод: усталость от отдыха — нормальный повод поговорить со специалистом → 4) CTA «Подобрать терапевта», без скидочного давления.
+
+Первый абзац: «Впереди три выходных — и, если честно, не всем от этого радостно. Кто-то уже составил список дел длиннее рабочего, кто-то заранее чувствует вину за то, что будет просто лежать. Если отдых даётся труднее работы — это не лень и не каприз».
+
+Тайминг: письмо — суббота 13.06, 11:00 МСК; пуш — воскресенье вечером: «Завтра ещё выходной. Разрешите себе его».</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="perf">
+    <summary>
+      <div class="dirs"><span class="dir">перформанс/реклама</span></div>
+      <div class="ttl">№3. Кампания на родителей выпускников: «Поддержать ребёнка перед ЕГЭ — и не сгореть самому»</div>
+      <div class="why">Почему сейчас: экзамены до 19 июня, тревога в семьях на пике — аудитория «родители 40–55» сейчас максимально тёплая.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · объявления</span><button class="copy" data-t="pf3">Скопировать</button></div>
+<pre id="pf3">РСЯ/VK, таргет: родители 40–55, интересы «ЕГЭ, поступление, репетиторы». Период: до 19.06.
+Заголовки:
+— Ребёнок сдаёт ЕГЭ. А держитесь — вы
+— Как поддержать выпускника и не сгореть самому
+— Спокойный родитель — лучшая поддержка перед экзаменом
+Описания:
+— Психотерапевт поможет пережить экзамены без валерьянки. Онлайн, 50 минут.
+— Подберём специалиста, который вернёт в дом спокойствие. Выбор терапевта — без обязательств.
+Посадочная: лендинг «терапия для родителей» или квиз-подбор. UTM: utm_campaign=ege_parents_0626.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="perf smm">
+    <summary>
+      <div class="dirs"><span class="dir">перформанс/реклама</span><span class="dir">SMM/organic</span></div>
+      <div class="ttl">№4. Тест беты «Каналов» VK Рекламы: подписчики VK и Дзена из кабинета</div>
+      <div class="why">Почему сейчас: бета только открылась — аукцион пустой и дешёвый, ранние тесты дадут бенчмарки раньше конкурентов.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · механика теста</span><button class="copy" data-t="pf4">Скопировать</button></div>
+<pre id="pf4">Тест «Каналов» VK Рекламы (бета)
+Гипотеза: стоимость подписчика VK/Дзен из кабинета ≤ 60% стоимости подписчика с посевов в Telegram.
+Сетап: 2 кампании (сообщество VK, канал в Дзене) × 2 креатива (цитата терапевта / карточка-сохраняйка), бюджет 30–50 тыс. ₽ на 2 недели.
+Метрики: CPF; доля «живых» подписчиков (читают ≥2 поста за 2 недели); отписки за 7 дней.
+Стоп-критерий: CPF дороже посевов на 20%+ после половины бюджета → выключаем.
+Бонус: у Дзена есть оптимизация на дочитывания — отдельная группа под лонгриды блога Ясно.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="smm seo">
+    <summary>
+      <div class="dirs"><span class="dir">SMM/organic</span><span class="dir">SEO/контент</span></div>
+      <div class="ttl">№5. Пост «Бот выслушает. Терапевт услышит» — разбор Tee</div>
+      <div class="why">Почему сейчас: AI-терапия хайпует, запуск Tee — 9 июня. Готовая рамка, чтобы занять позицию до того, как спросят.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · текст поста</span><button class="copy" data-t="pf5">Скопировать</button></div>
+<pre id="pf5">Заголовок: Бот выслушает. Терапевт услышит.
+Хук: Американская Talkspace выпустила AI-терапевта за $20 в месяц. Спойлер: внутри всё равно дежурят живые психотерапевты.
+
+Абзац 1: Tee — AI-агент, который помнит ваши разговоры, отвечает в 3 часа ночи и стоит дешевле одной сессии. Звучит как замена терапии?
+Абзац 2: Нет. При первых признаках риска Tee передаёт человека живому клиницисту. Даже компания, которая продаёт AI-терапию, не доверяет ей человека в уязвимый момент.
+Абзац 3: AI — неплохая прихожая: разложить мысли среди ночи, сформулировать запрос. Но работа происходит там, где один человек по-настоящему слышит другого.
+CTA: А вы пробовали говорить с ботом о важном? Расскажите, что получилось.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="smm influence">
+    <summary>
+      <div class="dirs"><span class="dir">SMM/organic</span><span class="dir">influence</span></div>
+      <div class="ttl">№6. Серия reels «Болею ночью» — на весь месяц ЧМ</div>
+      <div class="why">Почему сейчас: матчи ЧМ-2026 идут ночью по Москве — месяц коллективного недосыпа и эмоциональных качелей. Серийность = накопительный охват.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · сценарии хуков</span><button class="copy" data-t="pf6">Скопировать</button></div>
+<pre id="pf6">Reels/Shorts серия «Болею ночью» (на месяц ЧМ-2026)
+Вариант 1 (15 сек): 0–3 сек — тёмная комната, светится телефон, титр «3:47. Пенальти». 3–10 сек — нарезка: будильник 7:00, кофе, рабочая встреча. 10–15 сек — терапевт в кадре: «Как болеть и не развалиться — три правила» → карусель/закреп с правилами.
+Вариант 2 (15 сек): хук «Моя команда проиграла. Почему мне по-настоящему плохо?» → терапевт за 10 секунд объясняет спортивное горевание → «Это нормально. Вот что помогает».
+Механика: выпуски в дни топ-матчей, дуэты с фан-аккаунтами, хэштеги ЧМ. Бережно: без шуток над болельщиками.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="brand b2b crm">
+    <summary>
+      <div class="dirs"><span class="dir">бренд/спецпроекты</span><span class="dir">partnerships/B2B</span><span class="dir">CRM/lifecycle</span></div>
+      <div class="ttl">№7. Акция ко Дню медработника: спецусловия для врачей</div>
+      <div class="why">Почему сейчас: 21 июня — тёплый повод, врачи в топе по выгоранию, и есть полторы недели на подготовку.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · механика акции</span><button class="copy" data-t="pf7">Скопировать</button></div>
+<pre id="pf7">Акция ко Дню медработника (21.06)
+Механика: промокод CARE21 — скидка на первые сессии для врачей, медсестёр, фельдшеров; подтверждение — фото бейджа/диплома в поддержку (или на доверии — решить с продуктом).
+Каналы: посевы в медицинских TG-каналах, кросс-промо с телемед-сервисами, email по сегменту «медики», если есть.
+Контент-обвязка: карточки «Выгорание врача: 5 ранних признаков» + интервью терапевта, который работает с медиками.
+Сроки: анонс 18–19.06, пик 21.06, хвост до 28.06.
+KPI: первые сессии по промокоду; CAC против среднего по акциям.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="design smm">
+    <summary>
+      <div class="dirs"><span class="dir">дизайн</span><span class="dir">SMM/organic</span></div>
+      <div class="ttl">№8. Карточки к солнцестоянию: «Ритуалы заботы вместо магических ритуалов»</div>
+      <div class="why">Почему сейчас: вокруг 21 июня традиционный всплеск эзотерики — шанс мягко отстроиться наукой и бережностью, без высокомерия.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · бриф карточек</span><button class="copy" data-t="pf8">Скопировать</button></div>
+<pre id="pf8">Карточки «Ритуалы заботы вместо магических ритуалов» (к 21.06)
+6 карточек: обложка «Самый длинный день года. Куда деть столько света?» → 4 «ритуала»: вечер без телефона за час до сна · блэкаут и прохлада в спальне · «выгрузка мыслей» на бумагу перед сном · яркий свет утром, а не ночью → финал «Магия — в регулярности. А терапия — рядом» + ссылка.
+Стиль: фирменный голубой, солнце, воздух; без эзотерики и без высмеивания тех, кто в неё верит.
+Форматы: VK и Telegram — карусель-сохраняйка; Дзен — лонгрид-версия.
+Дедлайн: макеты к 18.06, публикация 20–21.06.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="seo">
+    <summary>
+      <div class="dirs"><span class="dir">SEO/контент</span></div>
+      <div class="ttl">№9. Опорная статья «Как выбрать психолога: чек-лист 2026»</div>
+      <div class="why">Почему сейчас: волна СПЧ поднимет поисковый спрос «как проверить психолога» — а это вечнозелёный трафик с прямым интентом подбора.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · структура статьи</span><button class="copy" data-t="pf9">Скопировать</button></div>
+<pre id="pf9">Title: Как выбрать психолога в 2026: чек-лист из 7 пунктов | Ясно
+Description: Диплом, метод, супервизия — по каким признакам искать специалиста и какие красные флаги должны насторожить. Разбор с психотерапевтом Ясно.
+H2-план:
+1. Почему «найти своего» так сложно (цифра: 40% россиян были у психолога — psy.su)
+2. 7 признаков настоящего специалиста
+3. Красные флаги: «гарантия результата за 3 сессии», «потомственный коуч-регрессолог»
+4. Психолог, психотерапевт, психиатр — кто нужен вам
+5. Как устроен отбор в Ясно (прозрачно, со ссылками)
+6. FAQ — под featured snippets
+Ключи: как выбрать психолога, как проверить психолога, психолог онлайн как найти.
+Перелинковка: статьи о методах терапии + страница подбора.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="hr perf">
+    <summary>
+      <div class="dirs"><span class="dir">HR-маркетинг</span><span class="dir">перформанс/реклама</span></div>
+      <div class="ttl">№10. Кампания привлечения терапевтов: «Ваш метод. Ваш график. Наши клиенты»</div>
+      <div class="why">Почему сейчас: специалистов станет 140–152 тыс. к 2027–28 — конкуренция платформ за сильных терапевтов обострится. Кто начнёт раньше, заберёт лучших.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · заголовки + лендинг</span><button class="copy" data-t="pf10">Скопировать</button></div>
+<pre id="pf10">HR-кампания привлечения терапевтов
+Заголовки:
+— Ваш метод. Ваш график. Наши клиенты.
+— Практика без поиска клиентов: Ясно приводит, вы работаете
+— Супервизия, сообщество и стабильная запись — в одном месте
+Лендинг-структура: доход и заполняемость → откуда приходят клиенты → супервизии и развитие → отзывы терапевтов платформы → заявка в 2 поля.
+Каналы: таргет на выпускников психфаков и программ переподготовки, посевы в проф. сообществах, стенд/доклад на следующем СПб саммите психологов.
+Контекст-цифра для креативов: «к психологам обращались 40% россиян» (psy.su).</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="product">
+    <summary>
+      <div class="dirs"><span class="dir">product/CRO</span></div>
+      <div class="ttl">№11. A/B-тест блока доверия «Как мы отбираем терапевтов» на первом экране</div>
+      <div class="why">Почему сейчас: страх «попасть к шарлатану» — в федеральной повестке. Прозрачный отбор на первом экране конвертирует этот страх в доверие.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · дизайн теста</span><button class="copy" data-t="pf11">Скопировать</button></div>
+<pre id="pf11">A/B-тест блока доверия
+Гипотеза: блок прозрачного отбора на первом экране поднимет конверсию в старт анкеты подбора на 5–10% (фон: повестка СПЧ о псевдопсихологах).
+Вариант A: текущий первый экран.
+Вариант B: + полоса «Каждый терапевт Ясно прошёл: проверку диплома ✓ кейс-интервью ✓ супервизию ✓» со ссылкой «как устроен отбор».
+Метрика: CR «первый экран → старт анкеты»; вторичная — CR в оплату. Значимость 95%.
+Трафик: 50/50 на органике и брендовом контексте (перформанс-кампании не трогаем).
+Срок: 2 недели или до статзначимости.</pre></div></div>
+  </details>
+
+  <details class="idea" data-dirs="influence smm">
+    <summary>
+      <div class="dirs"><span class="dir">influence</span><span class="dir">SMM/organic</span></div>
+      <div class="ttl">№12. Микроинфлюенс «Пережить ЕГЭ всей семьёй»</div>
+      <div class="why">Почему сейчас: до 19 июня семьи выпускников живут на нервах — родительские микроблогеры сейчас самые читаемые. Успеть за неделю.</div>
+    </summary>
+    <div class="body"><div class="pf"><div class="pf-head"><span class="lbl">Полуфабрикат · аутрич</span><button class="copy" data-t="pf12">Скопировать</button></div>
+<pre id="pf12">Микроинфлюенс «Пережить ЕГЭ всей семьёй»
+Кого ищем: микроблогеры-родители (10–100 тыс.), ЕГЭ-репетиторы, психологи-блогеры с родительской аудиторией. 5–8 интеграций до 19.06.
+Формат: нативный пост/сторис «как мы выдыхаем в ночь перед экзаменом» + промокод на первую сессию для родителей.
+Аутрич-черновик: «Здравствуйте! Мы в Ясно видим, как июнь выматывает семьи выпускников. Готовим серию о поддержке родителей — предлагаем партнёрство: [условия]. Без "рекламы счастья" — только честный разговор о стрессе».
+KPI: переходы и анкеты по промокодам с тегом ege.
+Важно: маркировка ОРД/erid — у инфлюенс-интеграций это зона риска.</pre></div></div>
+  </details>
+</section>
+
+<!-- SMM-УГОЛОК -->
+<section id="smm">
+  <div class="sec-head"><h2>SMM-уголок</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <div class="smm">
+    <div class="cell"><div class="net">ВКонтакте</div><p>Факт дня: в кабинете VK Рекламы — бета «Каналов», закупка подписчиков сообщества с оптимизацией на подписку (<a href="https://www.sostav.ru/publication/vk-reklama-rasshirila-vozmozhnosti-prodvizheniya-kanalov-84493.html" target="_blank" rel="noopener">Sostav</a>). Рекомендация: тест №4 + карусели-сохраняйки как креатив.</p></div>
+    <div class="cell"><div class="net">Telegram-канал</div><p>Рекомендация редакции: месяц ЧМ — площадка для ситуативов «болею ночью» (№6); под пятничный журнал — закреп с опросом. Реакции на посты = наш CTR, голосуйте эмодзи.</p></div>
+    <div class="cell"><div class="net">Дзен</div><p>Рекомендация редакции: в «Каналах» VK у Дзена есть оптимизация на дочитывания — шанс дёшево раскачать лонгриды («как выбрать психолога», №9 → перелив в SEO).</p></div>
+  </div>
+</section>
+
+<!-- РАДАР -->
+<section id="radar" class="radar">
+  <div class="sec-head"><h2>Радар: юристам и продукту</h2>
+    <svg class="scrib" viewBox="0 0 54 18"><path d="M3 12 q10 -9 22 -4 t26 -1"/></svg>
+  </div>
+  <div class="block">
+    <h3>Штрафы до 700 тыс. ₽ за авторизацию и рекомендательные технологии</h3>
+    <p style="margin-top:8px">Госдума приняла в третьем чтении штрафы для юрлиц 500–700 тыс. ₽ (повторно — до 2,8 млн), если российским пользователям доступен вход только через иностранные сервисы, и за нарушения при работе рекомендательных технологий.</p>
+    <div class="takeaway"><b>Чек-лист:</b> 1) в вебе и приложении есть вход по телефону/через российские сервисы; 2) алгоритмический подбор терапевта оценить юридически как рекомендательную технологию.</div>
+    <div class="tag-src">Источник: <a href="https://ppc.world/news/gosduma-prinyala-zakon-o-shtrafah-do-700-000-rubley-za-narushenie-pravil-avtorizacii-na-saytah/" target="_blank" rel="noopener">ppc.world, 10.06</a></div>
+  </div>
+  <div class="block">
+    <h3>ФАС: реклама самих Telegram, WhatsApp, Instagram*, Facebook*, YouTube и VPN запрещена</h3>
+    <p style="margin-top:8px">Разъяснение по ст. 10.7 ч. 5 закона «О рекламе»: запрещено продвижение самих иностранных сервисов (не путать с размещением рекламы на площадках). Штрафы для юрлиц — 100–500 тыс. ₽.</p>
+    <div class="takeaway"><b>Чек-лист:</b> пройтись с юристами по креативам и лендингам, где упоминаются мессенджеры, — формулировки вида «напишите нам в WhatsApp» перепроверить.</div>
+    <div class="tag-src">Источник: <a href="https://www.garant.ru/news/2016799/" target="_blank" rel="noopener">Гарант, 10.06</a> · *Meta признана экстремистской и запрещена в РФ</div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Ясновидец</b> — внутреннее AI-медиа маркетинг-команды Ясно. Планёрка — каждый рабочий день, журнал — по пятницам.
+  Следующая планёрка — понедельник, 15 июня (12–14 июня — выходные). Журнал №1 — пятница, 19 июня.</p>
+  <p style="margin-top:10px">Концепт: визуальный язык создан по мотивам бренда Ясно и не использует оригинальные ассеты. Каждый факт — со ссылкой на источник; мнения и рекомендации редакции помечены. Темы суицида и трагедий не освещаются принципиально.</p>
+</footer>
+</div>
+
+<script>
+// Фильтр идей по направлениям
+const chips = document.querySelectorAll('.chip');
+const ideas = document.querySelectorAll('.idea');
+chips.forEach(ch => ch.addEventListener('click', () => {
+  chips.forEach(c => c.classList.remove('on'));
+  ch.classList.add('on');
+  const f = ch.dataset.f;
+  ideas.forEach(card => {
+    const dirs = card.dataset.dirs.split(' ');
+    card.classList.toggle('hidden', f !== 'all' && !dirs.includes(f));
+  });
+}));
+// Копирование полуфабрикатов
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+  const text = document.getElementById(btn.dataset.t).innerText;
+  const done = () => { btn.textContent = 'Скопировано ✓'; btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = 'Скопировать'; btn.classList.remove('ok'); }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallback());
+  } else fallback();
+  function fallback(){
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
+    ta.select(); try { document.execCommand('copy'); done(); } catch(e){} document.body.removeChild(ta);
+  }
+}));
+</script>
+</body>
+</html>

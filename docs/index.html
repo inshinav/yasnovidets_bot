@@ -4,17 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ясновидец — архив номеров</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  body { font-family: Georgia, 'Times New Roman', serif; max-width: 640px; margin: 0 auto; padding: 48px 24px; color: #1a1a1a; background: #fdfcfa; }
-  h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; }
-  p { color: #666; line-height: 1.6; }
-  .mark { font-size: 2.5rem; }
+:root{--blue:#2D8CFF;--blue-dark:#1668D9;--blue-soft:#EAF3FF;--blue-mist:#F6FAFF;
+  --ink:#10243E;--ink-soft:#4A5C74;--ink-mute:#8295AC;--line:#DCE9F9;
+  --shadow:0 6px 24px rgba(45,140,255,.10),0 1px 3px rgba(16,36,62,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--blue-mist);
+  color:var(--ink);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px 80px}
+header{position:relative;padding:72px 0 36px}
+.sun{position:absolute;top:20px;right:-20px;width:170px;height:170px;pointer-events:none}
+h1{font-size:clamp(36px,7vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+h1 span{color:var(--blue)}
+.sub{color:var(--ink-soft);font-weight:600;margin-top:10px;max-width:480px}
+h2{font-size:15px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--blue-dark);margin:40px 0 14px}
+a.issue{display:block;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 24px;
+  box-shadow:var(--shadow);text-decoration:none;color:var(--ink);margin-bottom:12px;transition:.15s}
+a.issue:hover{border-color:var(--blue);transform:translateY(-1px)}
+a.issue .t{font-weight:800;font-size:18px;letter-spacing:-.01em}
+a.issue .t em{font-style:normal;color:var(--blue)}
+a.issue .d{font-size:14.5px;color:var(--ink-soft);margin-top:4px}
+.empty{background:var(--blue-soft);border-radius:16px;padding:14px 18px;font-size:15px;color:var(--ink-soft)}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-mute)}
 </style>
 </head>
 <body>
-  <div class="mark">🔮</div>
-  <h1>Ясновидец — архив номеров</h1>
-  <p>Внутреннее медиа маркетинг-команды Ясно. Ежедневная «Планёрка» и пятничный «Журнал».</p>
-  <p>Выпуски появятся здесь.</p>
+<div class="wrap">
+<header>
+  <svg class="sun" viewBox="0 0 170 170" aria-hidden="true">
+    <circle cx="115" cy="62" r="30" fill="#FFD66B" opacity=".95"/>
+    <g stroke="#2D8CFF" stroke-width="3" stroke-linecap="round" opacity=".7">
+      <path d="M115 14 v12"/><path d="M115 98 v12"/><path d="M67 62 h12"/><path d="M151 62 h12"/>
+      <path d="M81 28 l8 8"/><path d="M141 88 l8 8"/><path d="M149 28 l-8 8"/><path d="M89 88 l-8 8"/>
+    </g>
+    <path d="M18 134 q50 -22 130 -6" stroke="#2D8CFF" stroke-width="3" fill="none" stroke-linecap="round" opacity=".5"/>
+  </svg>
+  <h1>Ясновидец<span>.</span></h1>
+  <p class="sub">Внутреннее AI-медиа маркетинг-команды Ясно. Планёрка — каждый рабочий день, журнал — по пятницам.</p>
+</header>
+
+<h2>Планёрки</h2>
+<a class="issue" href="issues/daily-2026-06-11.html">
+  <div class="t">Ясновидец <em>№1</em> — 11 июня 2026</div>
+  <div class="d">СПЧ против псевдопсихологов · AI-терапевт Tee за $19,99 · бета «Каналов» VK · 12 идей по 11 направлениям</div>
+</a>
+
+<h2>Журналы</h2>
+<div class="empty">Первый журнал выйдет в пятницу, 19 июня 2026.</div>
+
+<footer>
+  <p>Концепт: визуальный язык создан по мотивам бренда Ясно, оригинальные ассеты не используются. Каждый факт в выпусках — со ссылкой на источник.</p>
+</footer>
+</div>
 </body>
 </html>
