@@ -3,7 +3,15 @@
     "type": "issue_messages",
     "issue": 1,
     "date": "2026-06-11",
-    "messages": {"digest_1": 4, "digest_2": 5, "blank": 6, "quiz": 7, "ideas_poll": 8, "header_v2": 9},
+    "messages": {
+      "digest_1": 4,
+      "digest_2": 5,
+      "blank": 6,
+      "quiz": 7,
+      "ideas_poll": 8,
+      "header_v2": 9,
+      "header_v3_demo": 10
+    },
     "quiz_correct_option": 2,
     "journal_url": "https://telegra.ph/YAsnovidec-1--11-iyunya-2026--za-1011-iyunya-06-11",
     "note": "Карта сообщений выпуска №1 — для подсчёта реакций (CTR рубрик) и ответов quiz. Сообщения 4-6 — старый формат-простыня (до перестройки), 9 — новая короткая шапка с кнопкой на журнал"
