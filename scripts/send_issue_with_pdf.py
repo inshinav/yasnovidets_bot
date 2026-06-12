@@ -9,6 +9,7 @@ PDF upload is best-effort: if rendering/uploading fails, quiz and poll still go 
 Payload example:
 {
   "header": ".out/header.json",
+  "html": "docs/issues/week-2026-w24.html",
   "pdf": "docs/pdf/issues/week-2026-w24.pdf",
   "quiz": ".out/quiz.json",
   "ideas_poll": ".out/ideas_poll.json"
@@ -16,6 +17,7 @@ Payload example:
 """
 import json
 import os
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -23,6 +25,13 @@ import uuid
 
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PDF_CAPTION = "📎 PDF-версия выпуска\nУдобно читать, сохранить и переслать. HTML-версия — по кнопке выше."
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+except AttributeError:
+    pass
 
 
 def load_json(path):
@@ -87,20 +96,93 @@ def send_json_method(method, payload_path):
     return resp["result"]
 
 
+def send_pdf_error(chat_id, header_message_id, reason):
+    reason = str(reason).replace(os.environ.get("TG_BOT_TOKEN", ""), "<redacted>")
+    payload = {
+        "chat_id": chat_id,
+        "text": "PDF сегодня не собрался: %s" % reason[:700],
+        "reply_to_message_id": header_message_id,
+        "disable_web_page_preview": True,
+    }
+    resp = bot_request("sendMessage", payload)
+    brief = {"ok": resp.get("ok"), "description": resp.get("description")}
+    if isinstance(resp.get("result"), dict):
+        brief["message_id"] = resp["result"].get("message_id")
+    print(json.dumps({"pdfErrorMessage": brief}, ensure_ascii=False))
+
+
+def default_pdf_for_html(html_path):
+    rel = html_path.replace("\\", "/")
+    name = os.path.splitext(os.path.basename(rel))[0] + ".pdf"
+    if rel.startswith("docs/samples/"):
+        return os.path.join("docs", "pdf", "samples", name)
+    return os.path.join("docs", "pdf", "issues", name)
+
+
+def ensure_pdf(cfg):
+    pdf_path = cfg.get("pdf")
+    html_path = cfg.get("html")
+    if pdf_path and os.path.exists(os.path.join(ROOT, pdf_path)):
+        return pdf_path
+    if not html_path:
+        if pdf_path:
+            raise RuntimeError("PDF file not found: %s" % pdf_path)
+        return None
+    pdf_path = pdf_path or default_pdf_for_html(html_path)
+    cmd = ["node", os.path.join("scripts", "render_pdf.js"), html_path]
+    result = subprocess.run(
+        cmd,
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        timeout=180,
+        check=False,
+    )
+    if result.returncode != 0:
+        msg = (result.stderr or result.stdout or "render_pdf.js failed").strip()
+        raise RuntimeError(msg)
+    if not os.path.exists(os.path.join(ROOT, pdf_path)):
+        raise RuntimeError("PDF file was not created: %s" % pdf_path)
+    return pdf_path
+
+
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python scripts/send_issue_with_pdf.py payload.json", file=sys.stderr)
+    dry_run = "--dry-run" in sys.argv
+    args = [x for x in sys.argv[1:] if x != "--dry-run"]
+    if len(args) != 1:
+        print("Usage: python scripts/send_issue_with_pdf.py [--dry-run] payload.json", file=sys.stderr)
         sys.exit(2)
-    cfg = load_json(sys.argv[1])
+    cfg = load_json(args[0])
+    if dry_run:
+        pdf_path = cfg.get("pdf") or (default_pdf_for_html(cfg["html"]) if cfg.get("html") else None)
+        print(json.dumps({
+            "dry_run": True,
+            "order": ["sendMessage", "sendDocument", "sendPoll:quiz", "sendPoll:ideas_poll"],
+            "header": cfg.get("header"),
+            "html": cfg.get("html"),
+            "pdf": pdf_path,
+            "caption": cfg.get("pdf_caption", PDF_CAPTION),
+        }, ensure_ascii=False, indent=2))
+        return
+
     header_result = send_json_method("sendMessage", cfg["header"])
     header_message_id = header_result["message_id"]
     header_payload = load_json(cfg["header"])
     chat_id = header_payload["chat_id"]
 
-    pdf_path = cfg.get("pdf")
+    pdf_path = None
+    try:
+        pdf_path = ensure_pdf(cfg)
+    except Exception as exc:
+        print(json.dumps({"pdfRender": {"ok": False, "description": str(exc)[:700]}}, ensure_ascii=False))
+        try:
+            send_pdf_error(chat_id, header_message_id, exc)
+        except Exception as notify_exc:
+            print(json.dumps({"pdfErrorMessage": {"ok": False, "description": str(notify_exc)[:700]}}, ensure_ascii=False))
+
     if pdf_path:
         try:
-            caption = cfg.get("pdf_caption", "PDF-версия выпуска")
+            caption = cfg.get("pdf_caption", PDF_CAPTION)
             resp = bot_request(
                 "sendDocument",
                 {
@@ -114,8 +196,14 @@ def main():
             if isinstance(resp.get("result"), dict):
                 brief["message_id"] = resp["result"].get("message_id")
             print(json.dumps({"sendDocument": brief}, ensure_ascii=False))
+            if not resp.get("ok"):
+                raise RuntimeError(resp.get("description") or "sendDocument failed")
         except Exception as exc:  # best-effort by design
             print(json.dumps({"sendDocument": {"ok": False, "description": str(exc)}}, ensure_ascii=False))
+            try:
+                send_pdf_error(chat_id, header_message_id, exc)
+            except Exception as notify_exc:
+                print(json.dumps({"pdfErrorMessage": {"ok": False, "description": str(notify_exc)[:700]}}, ensure_ascii=False))
 
     if cfg.get("quiz"):
         send_json_method("sendPoll", cfg["quiz"])

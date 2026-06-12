@@ -154,9 +154,14 @@ async function extractPage(page, htmlFile) {
       const title = text(sec.querySelector(".cad-title, .section-title"));
       const purpose = text(sec.querySelector(".purpose"));
       const period = text(sec.querySelector(".period"));
+      const isAudit = [badge, title, sec.id].join(" ").toLowerCase().includes("аудит");
       const rows = [...sec.querySelectorAll(".row")].slice(0, 8).map((row) => ({
         k: text(row.querySelector(".k")) || "•",
         text: text(row.querySelector("div:last-child")) || text(row)
+      }));
+      const tables = [...sec.querySelectorAll("table")].map((table) => ({
+        head: [...table.querySelectorAll("tr:first-child th, tr:first-child td")].map(text),
+        rows: [...table.querySelectorAll("tr")].slice(1, 8).map((tr) => [...tr.children].map(text))
       }));
       const auditRows = [...sec.querySelectorAll(".arow")].map((row) => ({
         axis: text(row.querySelector(".axis")),
@@ -164,7 +169,7 @@ async function extractPage(page, htmlFile) {
         reactClass: row.querySelector(".react")?.className || "",
         react: text(row.querySelector(".react"))
       }));
-      return { i, badge, title, purpose, period, rows, auditRows };
+      return { i, badge, title, purpose, period, rows, tables, auditRows, isAudit };
     });
     const ideas = [...document.querySelectorAll("details.idea")].map((idea, i) => ({
       title: text(idea.querySelector(".ttl")) || `Идея ${i + 1}`,
@@ -172,7 +177,10 @@ async function extractPage(page, htmlFile) {
       tag: text(idea.querySelector(".pill")),
       copy: htmlText(idea.querySelector("pre"))
     }));
-    const sources = [...document.querySelectorAll("a.src[href]")].map((a) => ({
+    const sources = [...document.querySelectorAll("a[href]")].filter((a) => {
+      const href = a.getAttribute("href") || "";
+      return a.classList.contains("src") || /^https?:\/\//.test(href);
+    }).map((a) => ({
       label: text(a) || a.href,
       href: a.href
     }));
@@ -208,11 +216,19 @@ function sectionBody(sec) {
   if (sec.rows.length) {
     return sec.rows.map((r) => `<div class="row"><div class="k">${esc(r.k)}</div><div>${esc(r.text)}</div></div>`).join("\n");
   }
+  if (sec.tables && sec.tables.length) {
+    return sec.tables.map((table) => {
+      const head = table.head.length ? `<tr>${table.head.map((c) => `<th>${esc(c)}</th>`).join("")}</tr>` : "";
+      const rows = table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
+      return `<table class="pdf-table">${head}${rows}</table>`;
+    }).join("\n");
+  }
   return `<p>${esc(sec.purpose || sec.title || "Раздел выпуска")}</p>`;
 }
 
 function buildPdfHtml(data, htmlFile, cssText, qrSrc) {
   const htmlUrl = htmlTargetUrl(htmlFile);
+  const sources = data.sources.length ? data.sources : [{ label: "HTML-версия выпуска", href: htmlUrl }];
   const periodMain = data.periods.find((p) => p.includes("собрано")) || data.periods[0] || "📅 собрано: период не указан";
   const periodAudit = data.periods.find((p) => p.includes("аудит")) || "📅 аудит за: см. журнал";
   const toc = [
@@ -244,7 +260,7 @@ function buildPdfHtml(data, htmlFile, cssText, qrSrc) {
   const sections = data.sections.map((sec, i) => `
     <section class="section" id="sec-${i}">
       <div class="section-head">
-        <span class="badge ${sec.auditRows.length ? "audit" : ""}">${esc(sec.badge || "раздел")}</span>
+        <span class="badge ${sec.isAudit ? "audit" : ""}">${esc(sec.badge || "раздел")}</span>
         <div class="section-title">${esc(sec.title || `Раздел ${i + 1}`)}</div>
       </div>
       ${sec.purpose ? `<p class="purpose">${esc(sec.purpose)}</p>` : ""}
@@ -300,7 +316,7 @@ function buildPdfHtml(data, htmlFile, cssText, qrSrc) {
   <section class="page" id="sources">
     <h2>Источники</h2>
     <div class="period">${esc(periodAudit)}</div>
-    <div class="sources">${sourceCards(data.sources)}</div>
+    <div class="sources">${sourceCards(sources)}</div>
     <p class="footnote">PDF собран автоматически через Playwright Chromium. Если PDF не собрался, выпуск всё равно может быть опубликован: HTML остаётся источником правды.</p>
   </section>
 </body>

@@ -40,8 +40,9 @@ python scripts/send_issue_with_pdf.py .out/payload.json
 ```json
 {
   "header": ".out/header.json",
+  "html": "docs/issues/week-2026-w24.html",
   "pdf": "docs/pdf/issues/week-2026-w24.pdf",
-  "pdf_caption": "PDF-версия выпуска",
+  "pdf_caption": "📎 PDF-версия выпуска\nУдобно читать, сохранить и переслать. HTML-версия — по кнопке выше.",
   "quiz": ".out/quiz.json",
   "ideas_poll": ".out/ideas_poll.json"
 }
@@ -55,3 +56,14 @@ python scripts/send_issue_with_pdf.py .out/payload.json
 4. опрос идей, если задан.
 
 PDF best-effort: ошибка сборки или загрузки PDF не блокирует выпуск.
+Если PDF не собрался или не загрузился, скрипт отправляет reply к шапке:
+
+```text
+PDF сегодня не собрался: <причина>
+```
+
+Для проверки порядка без отправки в Telegram:
+
+```powershell
+python scripts/send_issue_with_pdf.py --dry-run .out/payload.json
+```
