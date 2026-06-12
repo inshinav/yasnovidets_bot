@@ -1,0 +1,127 @@
+/* Ясновидец — стиль срезов (по showcase). Бренд: #2D8CFF, Manrope, росчерки, солнце. */
+:root{
+  --blue:#2D8CFF; --blue-deep:#1366D6; --ink:#16181D; --gray:#5B6470;
+  --paper:#F4F8FF; --tintl:#EAF2FF; --tint:#DCEBFF; --white:#FFFFFF;
+  --line:#E3EAF5; --good:#27AE60; --warn:#E8A23D; --bad:#E05C5C;
+  --r:18px; --shadow:0 8px 28px rgba(45,140,255,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+    radial-gradient(1200px 500px at 80% -8%, #FFF6E0 0%, rgba(255,246,224,0) 60%),
+    radial-gradient(900px 500px at 0% 0%, var(--tintl) 0%, rgba(234,242,255,0) 55%),
+    var(--paper);
+  color:var(--ink);font-family:Manrope,system-ui,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.5}
+html,body{overflow-x:clip}
+.wrap{max-width:880px;margin:0 auto;padding:40px 20px 80px}
+a{color:var(--blue-deep)}
+.squiggle{display:block;color:var(--blue)}
+.brand{display:flex;align-items:baseline;gap:8px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+.brand .dot{color:var(--blue)}
+.brand a{color:inherit;text-decoration:none}
+.backlink{font-size:13px;font-weight:600;color:var(--blue-deep);text-decoration:none;margin-left:auto}
+.lead{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:18px 0 10px}
+.lead b{color:var(--blue)}
+.sub{color:var(--gray);font-size:17px;max-width:620px;margin:0}
+.demo-note{margin:18px 0 0;background:#FFF6E0;border:1px solid #F2E3B3;border-radius:12px;
+  padding:10px 14px;font-size:13.5px;color:#7A5E1E;font-weight:600}
+.cad{margin-top:34px}
+.cad-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.badge{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--white);background:var(--blue);border-radius:999px;padding:5px 11px}
+.badge.alt{background:var(--ink)}
+.cad-title{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.purpose{color:var(--gray);font-size:14.5px;margin:2px 0 0}
+.period{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;color:var(--blue-deep);
+  background:var(--tintl);border:1px solid var(--tint);border-radius:8px;padding:4px 9px;margin-top:8px;font-weight:600}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+  padding:20px 22px;box-shadow:var(--shadow);margin-top:12px}
+.card h4{margin:0 0 4px;font-size:17px;font-weight:800;letter-spacing:-.01em}
+.card h4 .b{color:var(--blue)}
+.row{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.row:last-child{border-bottom:0}
+.row .k{flex:0 0 auto;font-weight:800;color:var(--blue)}
+.src{color:var(--blue-deep);font-weight:600;text-decoration:none;border-bottom:1px solid var(--tint)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;color:var(--blue-deep);
+  background:var(--tintl);border-radius:6px;padding:2px 7px;margin-right:6px}
+.num{font-size:15px}
+.num b{font-size:17px}
+.small{font-size:13px;color:var(--gray)}
+.hl{background:linear-gradient(transparent 60%, #FFE9A8 60%);padding:0 2px}
+/* лидерборд */
+.bars{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center;margin-top:6px}
+.bars .lab{font-size:13.5px;color:var(--gray)}
+.track{height:9px;background:var(--tintl);border-radius:999px;overflow:hidden}
+.fill{height:100%;background:var(--blue);border-radius:999px}
+.bars .v{font-weight:800;font-size:14px}
+/* воронка */
+.funnel{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.fstep{flex:1;min-width:120px;background:var(--tintl);border:1px solid var(--tint);border-radius:12px;padding:10px 12px}
+.fstep .n{font-size:22px;font-weight:800;color:var(--blue)}
+.fstep .t{font-size:12.5px;color:var(--gray);font-weight:600}
+/* таблицы */
+table.mx{border-collapse:collapse;width:100%;margin-top:8px;font-size:13.5px}
+table.mx th,table.mx td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.mx th{background:var(--tintl);font-weight:700}
+table.mx td.hot{background:#FFF6E0;font-weight:700}
+/* две колонки */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.two .col h5{margin:0 0 6px;font-size:14px;font-weight:800}
+.two .col.up h5{color:var(--good)} .two .col.down h5{color:var(--warn)}
+.two ul{margin:0;padding-left:18px;font-size:14px}
+.two li{margin:4px 0}
+/* плитки Wrapped */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.tile{background:linear-gradient(160deg,var(--blue),#5AA8FF);color:#fff;border-radius:14px;padding:14px}
+.tile .big{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.tile .cap{font-size:12px;opacity:.92;font-weight:600}
+.tile.alt{background:var(--white);color:var(--ink);border:1px solid var(--line)}
+.tile.alt .big{color:var(--blue)}
+/* ── аудит ── */
+.react{display:inline-block;font-size:11.5px;font-weight:800;border-radius:6px;padding:2px 8px;white-space:nowrap;vertical-align:1px}
+.react.ok{color:#1E7C46;background:#E5F6EC}
+.react.part{color:#8A6116;background:#FBF1DC}
+.react.miss{color:#A33A3A;background:#FBE5E5}
+.arow{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px;align-items:flex-start}
+.arow:last-child{border-bottom:0}
+.arow .axis{flex:0 0 118px;font-weight:800;font-size:13px;color:var(--blue-deep);padding-top:1px}
+.arow .lesson{margin-top:3px;font-size:13px;color:var(--gray)}
+.arow .lesson b{color:var(--ink)}
+.trend{font-weight:800}
+.trend.up{color:var(--good)} .trend.down{color:var(--warn)} .trend.flat{color:var(--gray)}
+.lessons{margin-top:14px;background:var(--tintl);border:1px solid var(--tint);border-radius:12px;padding:12px 16px}
+.lessons h5{margin:0 0 6px;font-size:13.5px;font-weight:800;color:var(--blue-deep);text-transform:uppercase;letter-spacing:.04em}
+.lessons ul{margin:0;padding-left:18px;font-size:14px}
+.lessons li{margin:4px 0}
+/* ── карточка идеи ── */
+details.idea{background:var(--white);border:1.5px solid var(--blue);border-radius:var(--r);
+  box-shadow:var(--shadow);margin-top:12px;overflow:hidden}
+details.idea summary{list-style:none;cursor:pointer;padding:16px 20px;position:relative}
+details.idea summary::-webkit-details-marker{display:none}
+details.idea summary::after{content:"";position:absolute;right:20px;top:24px;width:9px;height:9px;
+  border-right:2.5px solid var(--blue);border-bottom:2.5px solid var(--blue);transform:rotate(45deg);transition:.2s}
+details.idea[open] summary::after{transform:rotate(-135deg);top:29px}
+details.idea .ttl{font-size:16px;font-weight:800;letter-spacing:-.01em;padding-right:28px}
+details.idea .why{font-size:13.5px;color:var(--gray);margin-top:5px;padding-right:24px}
+details.idea .body{padding:0 20px 18px}
+.pf{background:var(--paper);border:1px dashed var(--blue);border-radius:12px;padding:14px 16px}
+.pf pre{white-space:pre-wrap;font-family:inherit;font-size:13.5px;line-height:1.5;color:var(--ink);margin:0}
+.pf-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.pf-head .lbl{font-size:12px;font-weight:800;color:var(--blue-deep);text-transform:uppercase;letter-spacing:.05em}
+.copy{background:var(--blue);color:#fff;border:none;border-radius:999px;font-family:inherit;font-weight:800;
+  font-size:13px;padding:7px 14px;cursor:pointer}
+.copy:hover{background:var(--blue-deep)}
+.copy.ok{background:var(--good)}
+.foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--gray);font-style:italic}
+@media(max-width:560px){
+  .lead{font-size:30px}.tiles{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}.cad-title{font-size:21px}
+  .arow{flex-direction:column;gap:4px}.arow .axis{flex:none}
+  table.mx{font-size:12.5px}
+  table.mx th,table.mx td{padding:6px 7px}
+}
+@media print{
+  body{background:#fff}
+  .card,.tile{box-shadow:none}
+  .backlink,.copy{display:none}
+}
