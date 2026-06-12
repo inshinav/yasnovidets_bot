@@ -43,5 +43,15 @@
       "q3_bets": "одиночный выбор; лидер — приоритет стратсессии, фиксируется в Стратсрезе Q2 и аудите Q3",
       "ideas_9_12": "как опрос идей: вариант с >=2 голосами -> идея в status taken в ideas-log"
     }
+  },
+  {
+    "type": "issue_messages",
+    "issue": "insights-map",
+    "date": "2026-06-12",
+    "messages": {
+      "header": 20
+    },
+    "journal_url": "https://telegra.ph/YAsnovidec--Karta-insajtov--rost--produkt-12-iyunya-2026-06-12",
+    "note": "Карта инсайтов рост×продукт; опросы 17-19 удалены командой — политика «без голосований»"
   }
 ]
