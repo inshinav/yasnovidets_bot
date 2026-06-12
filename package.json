@@ -1,0 +1,15 @@
+{
+  "name": "yasnovidets",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Internal Yasno marketing intelligence digest generator",
+  "scripts": {
+    "pdf": "node scripts/render_pdf.js",
+    "pdf:issues": "node scripts/render_pdf.js --issues --update-index",
+    "pdf:samples": "node scripts/render_pdf.js --samples --update-index",
+    "pdf:all": "node scripts/render_pdf.js --all --update-index"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
