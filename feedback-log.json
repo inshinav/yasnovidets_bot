@@ -53,5 +53,37 @@
     },
     "journal_url": "https://telegra.ph/YAsnovidec--Karta-insajtov--rost--produkt-12-iyunya-2026-06-12",
     "note": "Карта инсайтов рост×продукт; опросы 17-19 удалены командой — политика «без голосований»"
+  },
+  {
+    "type": "issue_messages",
+    "issue": "slices-cascade-pdf",
+    "date": "2026-06-14",
+    "messages": {
+      "year": {
+        "header": 21,
+        "pdf": 22
+      },
+      "half": {
+        "header": 23,
+        "pdf": 24
+      },
+      "quarter": {
+        "header": 25,
+        "pdf": 26
+      },
+      "month": {
+        "header": 27,
+        "pdf": 28
+      },
+      "week": {
+        "header": 29,
+        "pdf": 30
+      },
+      "day": {
+        "header": 31,
+        "pdf": 32
+      }
+    },
+    "note": "Каскад год→день в новом формате (шапка + PDF reply) через scripts/send_issue_with_pdf.py — первый живой прогон PDF-слоя Codex. Кнопка шапки ведёт на Telegraph (Pages пока не включён)."
   }
 ]
