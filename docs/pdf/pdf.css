@@ -443,3 +443,39 @@ h3 {
   font-size: 8pt;
   font-style: italic;
 }
+
+/* ── блоки ретроспективы (news / tiles / two / lead) ── */
+.pdf-lead {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+.pdf-news {
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+  break-inside: avoid;
+}
+.pdf-news:last-child { border-bottom: 0; }
+.pdf-news .nh { font-weight: 800; font-size: 13.5px; line-height: 1.3; }
+.pdf-news .nl { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.pdf-news .ni { font-size: 12px; margin-top: 5px; padding-left: 9px; border-left: 3px solid var(--blue); }
+.pdf-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.pdf-tile {
+  background: var(--blue-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.pdf-tile .big { font-size: 19px; font-weight: 800; color: var(--blue-dark); letter-spacing: -.02em; }
+.pdf-tile .cap { font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+.pdf-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 6px; }
+.pdf-two .pdf-col h5 { margin: 0 0 4px; font-size: 12px; font-weight: 800; }
+.pdf-two .pdf-col ul { margin: 0; padding-left: 16px; }
+.pdf-two .pdf-col li { font-size: 11.5px; margin: 3px 0; }

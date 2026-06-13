@@ -169,7 +169,22 @@ async function extractPage(page, htmlFile) {
         reactClass: row.querySelector(".react")?.className || "",
         react: text(row.querySelector(".react"))
       }));
-      return { i, badge, title, purpose, period, rows, tables, auditRows, isAudit };
+      const news = [...sec.querySelectorAll(".news")].map((n) => ({
+        head: text(n.querySelector(".nh")),
+        line: text(n.querySelector(".nl")),
+        insight: text(n.querySelector(".ni")).replace(/^→\s*/, "")
+      }));
+      const tiles = [...sec.querySelectorAll(".tile")].map((t) => ({
+        big: text(t.querySelector(".big")),
+        cap: text(t.querySelector(".cap"))
+      }));
+      const cols = [...sec.querySelectorAll(".two .col")].map((c) => ({
+        head: text(c.querySelector("h5")),
+        items: [...c.querySelectorAll("li")].map(text)
+      }));
+      const lead = text(sec.querySelector(".lead-line"));
+      // .row, использованные внутри .news не бывают; но shifts — это .row, ок
+      return { i, badge, title, purpose, period, rows, tables, auditRows, news, tiles, cols, lead, isAudit };
     });
     const ideas = [...document.querySelectorAll("details.idea")].map((idea, i) => ({
       title: text(idea.querySelector(".ttl")) || `Идея ${i + 1}`,
@@ -206,24 +221,39 @@ function sourceCards(sources) {
 }
 
 function sectionBody(sec) {
+  const parts = [];
+  if (sec.lead) parts.push(`<p class="pdf-lead">${esc(sec.lead)}</p>`);
+  if (sec.tiles && sec.tiles.length) {
+    parts.push(`<div class="pdf-tiles">${sec.tiles.map((t) =>
+      `<div class="pdf-tile"><div class="big">${esc(t.big)}</div><div class="cap">${esc(t.cap)}</div></div>`).join("")}</div>`);
+  }
+  if (sec.cols && sec.cols.length) {
+    parts.push(`<div class="pdf-two">${sec.cols.map((c) =>
+      `<div class="pdf-col"><h5>${esc(c.head)}</h5><ul>${c.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`);
+  }
+  if (sec.news && sec.news.length) {
+    parts.push(sec.news.map((n) =>
+      `<div class="pdf-news"><div class="nh">${esc(n.head)}</div>${n.line ? `<div class="nl">${esc(n.line)}</div>` : ""}<div class="ni">→ ${esc(n.insight)}</div></div>`).join("\n"));
+  }
   if (sec.auditRows.length) {
-    return sec.auditRows.map((r) => {
+    parts.push(sec.auditRows.map((r) => {
       const cls = r.reactClass.includes("ok") ? "ok" : r.reactClass.includes("miss") ? "miss" : "part";
       const react = r.react || (cls === "ok" ? "✅ среагировали" : cls === "miss" ? "❌ проспали" : "⚠️ частично");
       return `<div class="audit-row"><div class="axis">${esc(r.axis)}</div><div>${esc(r.text)} <span class="react ${cls}">${esc(react)}</span></div></div>`;
-    }).join("\n");
+    }).join("\n"));
   }
   if (sec.rows.length) {
-    return sec.rows.map((r) => `<div class="row"><div class="k">${esc(r.k)}</div><div>${esc(r.text)}</div></div>`).join("\n");
+    parts.push(sec.rows.map((r) => `<div class="row"><div class="k">${esc(r.k)}</div><div>${esc(r.text)}</div></div>`).join("\n"));
   }
   if (sec.tables && sec.tables.length) {
-    return sec.tables.map((table) => {
+    parts.push(sec.tables.map((table) => {
       const head = table.head.length ? `<tr>${table.head.map((c) => `<th>${esc(c)}</th>`).join("")}</tr>` : "";
       const rows = table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
       return `<table class="pdf-table">${head}${rows}</table>`;
-    }).join("\n");
+    }).join("\n"));
   }
-  return `<p>${esc(sec.purpose || sec.title || "Раздел выпуска")}</p>`;
+  if (!parts.length) parts.push(`<p>${esc(sec.purpose || sec.title || "Раздел выпуска")}</p>`);
+  return parts.join("\n");
 }
 
 function buildPdfHtml(data, htmlFile, cssText, qrSrc) {
@@ -238,16 +268,24 @@ function buildPdfHtml(data, htmlFile, cssText, qrSrc) {
     ...(data.ideas.length ? [["ideas", "Идеи и полуфабрикаты"]] : []),
     ["sources", "Источники"]
   ];
-  const scanCards = data.sections.slice(0, 4).map((sec, i) => {
-    const first = sec.rows[0]?.text || sec.purpose || sec.title;
-    return `<div class="scan-card"><div class="n">0${i + 1}</div>${esc(first)}</div>`;
-  }).join("\n");
-  const actionCards = (data.ideas.length ? data.ideas.slice(0, 4) : data.sections.slice(0, 4).map((s) => ({
-    tag: s.badge,
-    title: s.title,
-    why: s.purpose
-  }))).map((item, i) =>
-    `<div class="action-card"><div class="tag">${esc(item.tag || `шаг ${i + 1}`)}</div><b>${esc(item.title)}</b><br>${esc(item.why || "Первый шаг — назначить владельца и метрику.")}</div>`
+  const allNews = data.sections.flatMap((s) => s.news || []);
+  // Скан за 30 секунд — самые жирные заголовки
+  const scanSource = allNews.length
+    ? allNews.slice(0, 4).map((n) => n.head)
+    : data.sections.slice(0, 4).map((s) => s.rows[0]?.text || s.lead || s.purpose || s.title);
+  const scanCards = scanSource.map((txt, i) =>
+    `<div class="scan-card"><div class="n">0${i + 1}</div>${esc(txt)}</div>`).join("\n");
+  // Что сделать — инсайты («так что для нас»), без генерик-заглушек
+  let actionItems;
+  if (data.ideas.length) {
+    actionItems = data.ideas.slice(0, 4).map((idea) => ({ tag: idea.tag, title: idea.title, why: idea.why }));
+  } else if (allNews.length) {
+    actionItems = allNews.slice(0, 4).map((n) => ({ tag: "", title: n.insight, why: "" }));
+  } else {
+    actionItems = data.sections.flatMap((s) => s.rows.map((r) => ({ tag: s.badge, title: r.text, why: "" }))).slice(0, 4);
+  }
+  const actionCards = actionItems.map((item, i) =>
+    `<div class="action-card"><div class="tag">${esc(item.tag || `шаг ${i + 1}`)}</div><b>${esc(item.title)}</b>${item.why ? `<br>${esc(item.why)}` : ""}</div>`
   ).join("\n");
   const ideas = data.ideas.map((idea, i) =>
     `<article class="idea-card">
