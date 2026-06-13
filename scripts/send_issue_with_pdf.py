@@ -20,6 +20,7 @@ import os
 import subprocess
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 import uuid
 
@@ -70,11 +71,16 @@ def multipart(fields, files):
         chunks.append(str(value).encode("utf-8"))
         chunks.append(b"\r\n")
     for key, file_path in files.items():
+        display_name = None
+        if isinstance(file_path, (tuple, list)):
+            file_path, display_name = file_path
         abs_path = os.path.join(ROOT, file_path)
-        filename = os.path.basename(abs_path)
+        # Telegram читает только обычный filename="..." (filename* игнорирует) и калечит
+        # отдельные символы (тире —, иногда скобки). display_name держим в безопасном наборе.
+        filename = display_name or os.path.basename(abs_path)
         chunks.append(("--%s\r\n" % boundary).encode())
         chunks.append(
-            ('Content-Disposition: form-data; name="%s"; filename="%s"\r\n' % (key, filename)).encode()
+            ('Content-Disposition: form-data; name="%s"; filename="%s"\r\n' % (key, filename)).encode("utf-8")
         )
         chunks.append(b"Content-Type: application/pdf\r\n\r\n")
         with open(abs_path, "rb") as f:
@@ -183,6 +189,7 @@ def main():
     if pdf_path:
         try:
             caption = cfg.get("pdf_caption", PDF_CAPTION)
+            document = (pdf_path, cfg["pdf_filename"]) if cfg.get("pdf_filename") else pdf_path
             resp = bot_request(
                 "sendDocument",
                 {
@@ -190,11 +197,12 @@ def main():
                     "caption": caption,
                     "reply_to_message_id": header_message_id,
                 },
-                {"document": pdf_path},
+                {"document": document},
             )
             brief = {"ok": resp.get("ok"), "description": resp.get("description")}
             if isinstance(resp.get("result"), dict):
                 brief["message_id"] = resp["result"].get("message_id")
+                brief["file_name"] = (resp["result"].get("document") or {}).get("file_name")
             print(json.dumps({"sendDocument": brief}, ensure_ascii=False))
             if not resp.get("ok"):
                 raise RuntimeError(resp.get("description") or "sendDocument failed")

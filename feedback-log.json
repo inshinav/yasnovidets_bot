@@ -84,6 +84,47 @@
         "pdf": 32
       }
     },
-    "note": "Каскад год→день в новом формате (шапка + PDF reply) через scripts/send_issue_with_pdf.py — первый живой прогон PDF-слоя Codex. Кнопка шапки ведёт на Telegraph (Pages пока не включён)."
+    "note": "Каскад год→день в новом формате (шапка + PDF reply) через scripts/send_issue_with_pdf.py — первый живой прогон PDF-слоя Codex. Кнопка шапки ведёт на Telegraph (Pages пока не включён). [СНЯТО 14.06: технические имена PDF; пересобрано с красивыми именами, сообщения 21-51 удалены]",
+    "superseded_by": "slices-cascade-pdf-clean"
+  },
+  {
+    "type": "issue_messages",
+    "issue": "slices-cascade-pdf-clean",
+    "date": "2026-06-14",
+    "messages": {
+      "year": {
+        "header": 52,
+        "pdf": 53
+      },
+      "half": {
+        "header": 54,
+        "pdf": 55
+      },
+      "quarter": {
+        "header": 56,
+        "pdf": 57
+      },
+      "month": {
+        "header": 58,
+        "pdf": 59
+      },
+      "week": {
+        "header": 60,
+        "pdf": 61
+      },
+      "day": {
+        "header": 62,
+        "pdf": 63
+      }
+    },
+    "pdf_filenames": {
+      "year": "Ясновидец Итоги и Wrapped 2026.pdf",
+      "half": "Ясновидец Разворот H1 2026.pdf",
+      "quarter": "Ясновидец Стратсрез Q2 2026.pdf",
+      "month": "Ясновидец Обзор июнь 2026.pdf",
+      "week": "Ясновидец Сводка недели июнь 2026.pdf",
+      "day": "Ясновидец Пульс 12 июня.pdf"
+    },
+    "note": "Чистый каскад год→день с красивыми именами PDF (pdf_filename, RFC-safe charset). Последнее сообщение в чате: 63."
   }
 ]
