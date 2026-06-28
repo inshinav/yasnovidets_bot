@@ -24,6 +24,9 @@ import urllib.parse
 import urllib.request
 import uuid
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tg_env import ensure_token_env
+
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PDF_CAPTION = "📎 PDF-версия выпуска\nУдобно читать, сохранить и переслать. HTML-версия — по кнопке выше."
@@ -153,6 +156,7 @@ def ensure_pdf(cfg):
 
 
 def main():
+    ensure_token_env()
     dry_run = "--dry-run" in sys.argv
     args = [x for x in sys.argv[1:] if x != "--dry-run"]
     if len(args) != 1:

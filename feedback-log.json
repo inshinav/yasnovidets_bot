@@ -191,5 +191,16 @@
     },
     "journal_url": "https://telegra.ph/YAsnovidec--Puls--24-iyunya-2026-06-24",
     "note": "Пульс 24.06 (SuperJob 71% выгорание, Pew ИИ vs регулирование). Перерыв 17-23.06: плановая задача не отрабатывала (приложение закрыто + аппрувы). Токен из приоритетного .env — отправка сразу прошла."
+  },
+  {
+    "type": "issue_messages",
+    "issue": "pulse-2026-06-29",
+    "date": "2026-06-29",
+    "messages": {
+      "header": 85,
+      "pdf": 86
+    },
+    "journal_url": "https://telegra.ph/YAsnovidec--Puls--29-iyunya-2026-06-28",
+    "note": "Пульс 29.06 понедельник (APA chatbots 2026: 77%/36%/15%; корпоративный well-being $61,8 млрд). isdayoff: 28.06 вых, 29.06 раб. Self-harm-статистика APA исключена по редполитике. Петля Шага 1: 0 новых апдейтов."
   }
 ]

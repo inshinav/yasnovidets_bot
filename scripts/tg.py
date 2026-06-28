@@ -5,11 +5,14 @@ import sys
 import urllib.request
 import urllib.error
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tg_env import ensure_token_env
+
 
 def main():
-    token = os.environ.get("TG_BOT_TOKEN")
+    token = ensure_token_env()
     if not token:
-        print("TG_BOT_TOKEN is not set", file=sys.stderr)
+        print("TG_BOT_TOKEN is not set (env var or .env)", file=sys.stderr)
         sys.exit(2)
     method = sys.argv[1]
     if len(sys.argv) > 2:
